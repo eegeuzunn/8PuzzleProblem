@@ -1,9 +1,6 @@
 import puzzle.Puzzle;
 import puzzle.PuzzleGenerator;
-import searchAlgorithms.Bfs;
-import searchAlgorithms.Dfs;
-import searchAlgorithms.Dls;
-import searchAlgorithms.Ids;
+import searchAlgorithms.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,7 +23,45 @@ public class Main {
 
         System.out.println("\n ------------------------------- \n");
 
+        long startTime = System.nanoTime();
+        System.out.println("GREEDY SEARCH (Manhattan Distance) RUNNING");
+        GreedySearch.searchWithManhattanDistance(puzzle, goal);
 
+        long endTime = System.nanoTime();
+        System.out.println("Time to run greedy search: " + ( endTime - startTime ) / 1000000 + "ms");
+
+        System.out.println("\n ------------------------------- \n");
+
+        startTime = System.nanoTime();
+        System.out.println("GREEDY SEARCH (Displaced Tiles) RUNNING");
+        GreedySearch.searchWithDisplacedTiles(puzzle, goal);
+
+        endTime = System.nanoTime();
+        System.out.println("Time to run greedy search: " + ( endTime - startTime ) / 1000000 + "ms");
+
+        System.out.println("\n ------------------------------- \n");
+
+        startTime = System.nanoTime();
+        System.out.println("A* (Manhattan Distance) RUNNING");
+        AStar.searchWithManhattanDistance(puzzle, goal);
+
+        endTime = System.nanoTime();
+        System.out.println("Time to run A*: " + ( endTime - startTime ) / 1000000 + "ms");
+
+        System.out.println("\n ------------------------------- \n");
+
+        startTime = System.nanoTime();
+        System.out.println("A* (Displaced Tiles) RUNNING");
+        AStar.searchWithDisplacedTiles(puzzle, goal);
+
+        endTime = System.nanoTime();
+        System.out.println("Time to run greedy search: " + ( endTime - startTime ) / 1000000 + "ms");
+
+        System.out.println("\n ------------------------------- \n");
+
+
+
+        /*
         long startTime = System.nanoTime();
         System.out.println("BFS RUNNING");
 
@@ -63,6 +98,6 @@ public class Main {
 
         endTime = System.nanoTime();
         System.out.println("Time to run ids(Iterative Depth Search): " + ( endTime - startTime ) / 1000000 + "ms");
-
+        */
     }
 }
